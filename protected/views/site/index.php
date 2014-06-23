@@ -1,7 +1,29 @@
 <?php
 /* @var $this SiteController */
-
-$this->pageTitle=Yii::app()->name;
+$this->pageTitle = "iOS constructor prototype";
 ?>
 
-<h1><i><?php echo CHtml::encode(Yii::app()->name); ?></i> API server</h1>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	
+    function changeBackground() {
+        $( '#screen' ).css( { backgroundImage: 'url(uploads/screen.png)' } );
+    }
+
+    setInterval( changeBackground, 2000 );  
+});
+
+
+</script>
+
+
+<div class="iphone">
+
+	<div id="screen" class="screen"></div>
+
+	
+	
+</div>
