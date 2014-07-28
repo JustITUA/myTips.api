@@ -24,6 +24,12 @@ $(document).ready(function(){
 
 	<div id="screen" class="screen"></div>
 
+	<?php
+	/* @var $this SiteController */
+	echo "v".Yii::app()->session['var'];
+	
+?>
+	
 	
 	
 </div>

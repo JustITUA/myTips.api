@@ -19,6 +19,7 @@ class ApiController extends Controller {
         switch ($_GET['model']) {
             case 'test':
                 $output = array("message" => "OK");
+                Yii::app()->session['var'] = 'value';
                 break;
             default:
                 // Model not implemented error
@@ -188,20 +189,20 @@ class ApiController extends Controller {
         $user = User::model()->find('LOWER(phone)=?', array(strtolower($userphone)));
         if ($user === null) {
             // Error: Unauthorized
-            $this->_sendResponse(401, 'Пользователя не существует');
+            $this->_sendResponse(401, '������������������������ ���� ��������������������');
         } else if (!$user->validatePassword($userphone, $token, $timestamp)) {
             // Error: Unauthorized
-            $this->_sendResponse(401, 'Неверный номер телефона/пароль');
+            $this->_sendResponse(401, '���������������� ���������� ����������������/������������');
         }
 
         if ($check_is_active && $user->is_active == 0)
-            $this->_sendResponse(402, 'Пользователь не активирован');
+            $this->_sendResponse(402, '������������������������ ���� ����������������������');
 
         if ($user->is_blocked == 1)
-            $this->_sendResponse(401, 'Пользователь заблокирован');
+            $this->_sendResponse(401, '������������������������ ������������������������');
 
         if ($_GET['USER_ID'] > -1 && $user->id != $_GET['USER_ID'])
-            $this->_sendResponse(402, 'Передан неверный идентификатор пользоателя');
+            $this->_sendResponse(402, '�������������� ���������������� �������������������������� ����������������������');
     }
 
     private function _selectCurrentUser($AUTH_PHONE) {
